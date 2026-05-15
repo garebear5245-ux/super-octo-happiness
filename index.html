@@ -10,9 +10,8 @@
       --card: #16161f;
       --accent: #00ffaa;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+   
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
@@ -21,7 +20,6 @@
       padding: 40px 20px;
       text-align: center;
     }
-
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
@@ -29,25 +27,21 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .subtitle {
       font-size: 1.3rem;
       opacity: 0.8;
       margin-bottom: 40px;
     }
-
     .container {
       max-width: 700px;
       margin: 0 auto;
     }
-
     .card {
       background: var(--card);
       padding: 40px 30px;
       border-radius: 20px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     }
-
     select {
       width: 100%;
       padding: 16px 20px;
@@ -59,7 +53,6 @@
       margin: 20px 0;
       cursor: pointer;
     }
-
     .download-btn {
       background: var(--accent);
       color: black;
@@ -72,12 +65,10 @@
       margin-top: 10px;
       transition: 0.3s;
     }
-
     .download-btn:hover {
       transform: scale(1.05);
       box-shadow: 0 10px 25px rgba(0, 255, 170, 0.4);
     }
-
     .info {
       margin-top: 30px;
       font-size: 0.95rem;
@@ -89,18 +80,18 @@
   <div class="container">
     <h1>GameDownloads</h1>
     <p class="subtitle">Select and download HTML games</p>
-
+    
     <div class="card">
       <h2>Select Game</h2>
-      
+     
       <select id="gameSelect">
-        <option value="">-- Loading games... --</option>
+        <option value="">-- Choose a game --</option>
       </select>
-
+      
       <button class="download-btn" onclick="downloadSelected()">
         Download Selected Game
       </button>
-
+      
       <div class="info">
         The downloaded zip contains a full HTML game you can play offline
       </div>
@@ -110,8 +101,8 @@
   <script>
     // === ADD YOUR GAMES HERE ===
     const games = [
-      { name: "ChromeDinoGame", file: "ChromeDinoGame.zip" },
-      // Add more games below following the same format:
+      { name: "Chrome Dino Game", file: "games/ChromeDinoGame.zip" },
+      // Add more games below (follow the same format):
       // { name: "Game Name", file: "games/your-zip-name.zip" },
     ];
 
@@ -129,7 +120,7 @@
     function downloadSelected() {
       const select = document.getElementById('gameSelect');
       const path = select.value;
-      
+     
       if (!path) {
         alert("Please select a game first!");
         return;
@@ -137,7 +128,7 @@
 
       const link = document.createElement('a');
       link.href = path;
-      link.download = path.split('/').pop();
+      link.download = path.split('/').pop();   // Downloads with original zip name
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
